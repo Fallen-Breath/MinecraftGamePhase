@@ -1,0 +1,138 @@
+_language_name: English
+
+phase:
+  async_task:
+    name: Async task
+    detail: Executing async tasks
+  auto_save:
+    name: Auto save
+    detail: Auto save
+  block_change_sync:
+    name: Block Change Sync
+    detail: Sync changed blocks in the chunk to the client
+  block_event:
+    name: Block Event
+    detail: Block events
+  cat_spawning:
+    name: Cat Spawning
+    detail: Spawning cats in villages
+  chunk_tick:
+    name: Chunk Tick
+    detail: Chunk Tick
+  chunk_unload:
+    name: Chunk Unload
+    detail: Unloading chunks
+  command_function:
+    name: Command Function
+    detail: Executes functions and datapacks
+  console:
+    name: Console
+    detail: Handling console inputs
+  dragon_fight:
+    name: Dragon Fight
+    detail: Dragon fight logic
+  entity:
+    name: Entity
+    detail: Ticking entities
+  entity_management:
+    name: Entity Management
+    detail: Load / Unload entities due to chunk load / unload
+  entity_tracker:
+    name: Entity Tracker
+    detail: Sync entity updates to the client
+  for_each_chunk:
+    name: For each chunk
+    detail: For each chunk has player nearby, do following logics
+  for_each_world:
+    name: For each world
+    detail: For each world, do following logics
+  game_event:
+    name: Game Event
+    detail: Emit enqueued game events
+  game_loop:
+    name: Game Loop
+    detail: The main and the infinite loop
+  ice_and_snow:
+    name: Ice and Snow
+    detail: Forming ice and snow
+  light_logic:
+    name: Light Logic
+    detail: Light check and skylight recalculation
+  natural_spawning:
+    name: Natural Spawning
+    detail: Natural mob spawning
+  network:
+    name: Network
+    detail: Network system ticking
+  patrol_spawning:
+    name: Patrol Spawning
+    detail: Spawning pillager patrols
+  phantom_spawning:
+    name: Phantom Spawning
+    detail: Spawning phantoms
+  player_action:
+    name: Player Action
+    detail: Handling player actions from packets from clients
+  player_entity:
+    name: Player Entity
+    detail: Ticking entity logic of players
+  player_check_light:
+    name: Player Check Light
+    detail: Random light level check nearby players
+  player_chunk_map:
+    name: Player Chunk Map
+    detail: Player chunk map update
+  portal_cache:
+    name: Portal Cache
+    detail: Timeout portal cache cleanup
+  raid:
+    name: Raid
+    detail: Raid logics
+  random_tick:
+    name: Random Tick
+    detail: Block and fluid random ticks
+  sleeping:
+    name: Sleeping
+    detail: Player sleeping logic
+  special_spawning:
+    name: Special Spawning
+    detail: Spawning special mobs
+  thunder:
+    name: Thunder
+    detail: Lighting and skeleton trap spawning
+  ticket:
+    name: Ticket
+    detail: Ticket System update
+  tile_entity:
+    name: Tile Entity
+    detail: Ticking tile entities
+  tile_tick:
+    name: Tile Tick
+    detail: Executing tile tick events, including block tile ticks and fluid tile ticks
+  village:
+    name: Village
+    detail: Village logics
+  wandering_trader_spawning:
+    name: Wandering Trader Spawning
+    detail: Spawning wandering traders
+  weather:
+    name: Weather
+    detail: Update weather
+  world_border:
+    name: World Border
+    detail: World border update
+  world_time_sync:
+    name: World Time Sync
+    detail: Sync world time to client
+  world_time_update:
+    name: World Time Update
+    detail: Update gametime and daytime of the world
+  zombie_siege_spawning:
+    name: Zombie Siege Spawning
+    detail: Spawning zombie sieges
+
+page:
+  title: Game phase for Minecraft {0}
+  applicable_version: 'Applicable versions: {0}'
+  phase_tree: Phase Tree
+  phase_details: Phase Details

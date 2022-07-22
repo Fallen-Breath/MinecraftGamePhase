@@ -1,0 +1,42 @@
+name: Update Catalogue
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
+      - uses: actions/cache@v2
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-:
+
+      - name: Prepare runtime
+        run: |
+          cd ./scripts
+          pip install -r requirements.txt
+
+      - name: Generate pages
+        run: |
+          cd ./scripts
+          python gen.py
+
+      - name: Deploy doc
+        uses: s0/git-publish-subdir-action@develop
+        env:
+          REPO: self
+          BRANCH: page
+          FOLDER: pages
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SQUASH_HISTORY: true
+          SKIP_EMPTY_COMMITS: true

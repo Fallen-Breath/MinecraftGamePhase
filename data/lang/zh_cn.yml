@@ -1,0 +1,138 @@
+_language_name: 中文
+
+phase:
+  async_task:
+    name: 异步事件
+    detail: 执行异步计划的世界
+  auto_save:
+    name: 自动保存
+    detail: 自动保存
+  block_change_sync:
+    name: 方块变化同步
+    detail: 将区块中的方块变化同步至客户端
+  block_event:
+    name: 方块事件
+    detail: 执行方块事件
+  cat_spawning:
+    name: 猫生成
+    detail: 在村庄中生成猫
+  chunk_tick:
+    name: 区块刻
+    detail: 区块刻
+  chunk_unload:
+    name: 区块卸载
+    detail: 卸载区块
+  command_function:
+    name: 函数及数据包
+    detail: 函数与数据包的指令
+  console:
+    name: 控制台
+    detail: 处理控制台指令输入
+  dragon_fight:
+    name: 龙战
+    detail: 龙战逻辑
+  entity:
+    name: 实体
+    detail: 运算实体
+  entity_management:
+    name: 实体管理
+    detail: 加载/卸载那些因区块加载/卸载而增删的实体
+  entity_tracker:
+    name: 实体追踪器
+    detail: 向客户端同步实体状态更新
+  for_each_chunk:
+    name: 对于每一个区块
+    detail: 对于每个附近有玩家的情况，执行以下的逻辑
+  for_each_world:
+    name: 对于每一个维度
+    detail: 对于每一个维度，执行以下的逻辑
+  game_event:
+    name: 游戏事件
+    detail: 发出积攒的游戏事件
+  game_loop:
+    name: 游戏循环
+    detail: 无限执行的主循环
+  ice_and_snow:
+    name: 冰雪
+    detail: 结冰、积雪
+  light_logic:
+    name: 光照逻辑
+    detail: 亮度检查以及天空光重计算
+  natural_spawning:
+    name: 自然刷怪
+    detail: 怪物自然生成
+  network:
+    name: 网络
+    detail: 网络连接运算
+  patrol_spawning:
+    name: 灾厄巡逻队生成
+    detail: 随机生成灾厄巡逻队
+  phantom_spawning:
+    name: 幻翼生成
+    detail: 生成幻翼
+  player_action:
+    name: 玩家动作
+    detail: 处理来自客户端数据包的玩家动作
+  player_entity:
+    name: 玩家实体
+    detail: 运算玩家的实体相关逻辑
+  player_check_light:
+    name: 随机亮度更新
+    detail: 发生在玩家附近的随机亮度更新
+  player_chunk_map:
+    name: 玩家加载区块图
+    detail: 玩家加载区块图更新
+  portal_cache:
+    name: 地狱门缓存
+    detail: 清理超时的地狱门缓存
+  raid:
+    name: 袭击
+    detail: 袭击逻辑
+  random_tick:
+    name: 随机刻
+    detail: 方块以及流体随机刻
+  sleeping:
+    name: 睡觉
+    detail: 玩家睡觉逻辑
+  special_spawning:
+    name: 特殊生成
+    detail: 特殊的生物生成逻辑
+  thunder:
+    name: 雷电
+    detail: 生成雷电以及骷髅马陷阱
+  ticket:
+    name: 加载票
+    detail: 加载票系统更新
+  tile_entity:
+    name: 方块实体
+    detail: 运算方块实体
+  tile_tick:
+    name: 计划刻
+    detail: 执行计划刻事件，包括方块计划刻以及流体计划刻
+  village:
+    name: 村庄
+    detail: 村庄相关逻辑
+  wandering_trader_spawning:
+    name: 游商生成
+    detail: 生成游商
+  weather:
+    name: 天气
+    detail: 运算下雨打雷的天气逻辑
+  world_border:
+    name: 世界边界
+    detail: 更新世界边界
+  world_time_sync:
+    name: 同步世界时间
+    detail: 向客户端同步世界时间
+  world_time_update:
+    name: 更新世界时间
+    detail: 更新世界的 gametime 以及 daytime
+  zombie_siege_spawning:
+    name: 僵尸攻城生成
+    detail: 生成僵尸攻城
+
+page:
+  title: Minecraft {0} 游戏阶段
+  applicable_version: '适用版本范围: {0}'
+  phase_tree: 游戏阶段树
+  phase_details: 游戏阶段详情
