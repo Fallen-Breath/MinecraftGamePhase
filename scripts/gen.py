@@ -1,10 +1,14 @@
 import shutil
-from typing import Callable, Any
+from typing import Callable, Any, Dict
+
+from git import Repo
 
 import utils
-from constant import OUTPUT_DIR, DATA_DIR, MC_VERSIONS, LANGUAGES, MCVersion, OUTPUT_PHASES_DIR
+from constant import OUTPUT_DIR, DATA_DIR, MC_VERSIONS, LANGUAGES, MCVersion, OUTPUT_DIFF_DIR, OUTPUT_PAGE_DIR, REPO_URL
 from phase import PhaseTree
 from translation import language_context, tr
+
+trees: Dict[MCVersion, PhaseTree] = {}
 
 
 class Text:
@@ -20,16 +24,22 @@ def clean():
 	if OUTPUT_DIR.exists():
 		shutil.rmtree(OUTPUT_DIR)
 	OUTPUT_DIR.mkdir()
-	OUTPUT_PHASES_DIR.mkdir()
+	OUTPUT_PAGE_DIR.mkdir()
+	OUTPUT_DIFF_DIR.mkdir()
 
 
-def generate_page(mcv: MCVersion, writeln: Callable[[str], Any]):
-	w = utils.load_yaml(DATA_DIR / 'phase' / '{}.yml'.format(mcv.name))
+def load():
+	for mcv in MC_VERSIONS:
+		data = utils.load_yaml(DATA_DIR / 'phase' / '{}.yml'.format(mcv.name))
+		trees[mcv] = PhaseTree.create(data)
+
+
+def gen_page(mcv: MCVersion, writeln: Callable[[str], Any]):
 	writeln('# {}\n'.format(Text('title', mcv.name)))
 	writeln('{}\n'.format(Text('applicable_version', mcv.version_range)))
 
+	root = trees[mcv]
 	writeln('# {}\n'.format(Text('phase_tree')))
-	root = PhaseTree.create(w)
 	writeln('```')
 	root.print_tree(writeln)
 	writeln('```')
@@ -44,8 +54,8 @@ def generate_page(mcv: MCVersion, writeln: Callable[[str], Any]):
 	root.for_each(print_detail)
 
 
-def generate():
-	with open(OUTPUT_DIR / 'README.md', 'w', encoding='utf8') as f:
+def gen_pages():
+	with utils.write_file(OUTPUT_PAGE_DIR / 'README.md') as f:
 		f.write('# Index\n\n')
 
 		f.write('| Minecraft version | Links |\n'.format(Text('mc_version'), Text('link')))
@@ -61,13 +71,32 @@ def generate():
 	for mcv in MC_VERSIONS:
 		for lang in LANGUAGES:
 			with language_context(lang):
-				with open(OUTPUT_PHASES_DIR / '{}-{}.md'.format(mcv.name, lang), 'w', encoding='utf8') as f:
-					generate_page(mcv, lambda s: f.write(s + '\n'))
+				with utils.write_file(OUTPUT_PAGE_DIR / 'phases' / '{}-{}.md'.format(mcv.name, lang)) as f:
+					gen_page(mcv, lambda s: f.write(s + '\n'))
+
+
+def gen_git():
+	phase_file_name = 'phases.md'
+	for lang in LANGUAGES:
+		repo_path = OUTPUT_DIFF_DIR / lang
+		with language_context(lang):
+			repo = Repo.init(repo_path)
+			for mcv in MC_VERSIONS:
+				with utils.write_file(repo_path / phase_file_name) as f:
+					f.write('```\n')
+					trees[mcv].print_tree(lambda s: f.write(s + '\n'))
+					f.write('```\n')
+				repo.index.add([phase_file_name])
+				repo.index.commit('Minecraft {}\n\nversion range: {}'.format(mcv.name, mcv.version_range))
+			origin = repo.create_remote('origin', url=REPO_URL)
+			origin.push(refspec='refs/heads/master:refs/heads/{}'.format('diff/{}'.format(lang)))
 
 
 def main():
 	clean()
-	generate()
+	load()
+	gen_pages()
+	gen_git()
 
 
 if __name__ == '__main__':

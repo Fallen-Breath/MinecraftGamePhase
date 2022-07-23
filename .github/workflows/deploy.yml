@@ -26,17 +26,17 @@ jobs:
           cd ./scripts
           pip install -r requirements.txt
 
-      - name: Generate pages
+      - name: Generate output
         run: |
           cd ./scripts
           python gen.py
 
-      - name: Deploy doc
+      - name: Deploy pages
         uses: s0/git-publish-subdir-action@develop
         env:
           REPO: self
           BRANCH: page
-          FOLDER: page
+          FOLDER: output/page
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SQUASH_HISTORY: true
           SKIP_EMPTY_COMMITS: true
