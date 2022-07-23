@@ -49,22 +49,26 @@ def write_nav_header(file_name: str, file: IO[str]):
 	file.write('\n')
 
 
+def write_tree(root: PhaseTree, file: IO[str], *, simplified: bool = False):
+	file.write('```\n')
+	if simplified:
+		root = root.extract(lambda n: n.node_id in IMPORTANT_PHASES)
+		assert root is not None
+	root.print_tree(lambda s: file.write(s + '\n'))
+	file.write('```\n')
+	file.write('\n')
+
+
 def gen_page(mcv: MCVersion, file: IO[str]):
 	file.write('# {}\n\n'.format(Text('title', mcv.name)))
 	file.write('{}\n\n'.format(Text('applicable_version', mcv.version_range)))
 
 	root = trees[mcv]
 	file.write('## {}\n\n'.format(Text('phase_tree.simplified')))
-	file.write('```\n')
-	root.extract(lambda n: n.node_id in IMPORTANT_PHASES).print_tree(lambda s: file.write(s + '\n'))
-	file.write('```\n')
-	file.write('\n')
+	write_tree(root, file, simplified=True)
 
 	file.write('## {}\n\n'.format(Text('phase_tree.full')))
-	file.write('```\n')
-	root.print_tree(lambda s: file.write(s + '\n'))
-	file.write('```\n')
-	file.write('\n')
+	write_tree(root, file, simplified=False)
 
 	file.write('## {}\n\n'.format(Text('phase_details')))
 
@@ -101,17 +105,18 @@ def gen_pages():
 
 
 def gen_git():
-	phase_file_name = 'phases.md'
+	name_full = 'phases_full.md'
+	name_simplified = 'phases_simplified.md'
 	for lang in LANGUAGES:
 		repo_path = OUTPUT_DIFF_DIR / lang
 		with language_context(lang):
 			repo = Repo.init(repo_path)
 			for mcv in MC_VERSIONS:
-				with utils.write_file(repo_path / phase_file_name) as f:
-					f.write('```\n')
-					trees[mcv].print_tree(lambda s: f.write(s + '\n'))
-					f.write('```\n')
-				repo.index.add([phase_file_name])
+				with utils.write_file(repo_path / name_simplified) as f:
+					write_tree(trees[mcv], f, simplified=True)
+				with utils.write_file(repo_path / name_full) as f:
+					write_tree(trees[mcv], f, simplified=False)
+				repo.index.add([name_full, name_simplified])
 				repo.index.commit('Minecraft {}\n\nversion range: {}'.format(mcv.name, mcv.version_range))
 
 
