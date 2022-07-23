@@ -57,3 +57,8 @@ jobs:
             git push origin master:diff/$lang --force
             cd ..
           done
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: output
+          path: output/
