@@ -4,9 +4,9 @@ from typing import Dict, IO
 from git import Repo
 
 import utils
-from constant import OUTPUT_DIR, DATA_DIR, MC_VERSIONS, LANGUAGES, MCVersion, OUTPUT_DIFF_DIR, OUTPUT_PAGE_DIR, DEFAULT_LANGUAGE, IMPORTANT_PHASES
-from phase import PhaseTree
+from constant import OUTPUT_DIR, DATA_DIR, MC_VERSIONS, LANGUAGES, MCVersion, OUTPUT_DIFF_DIR, OUTPUT_PAGE_DIR, IMPORTANT_PHASES
 from translation import language_context, tr, current_lang, get_lang_specified_file_name
+from tree import PhaseTree
 
 trees: Dict[MCVersion, PhaseTree] = {}
 
