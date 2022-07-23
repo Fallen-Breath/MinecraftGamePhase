@@ -3,13 +3,13 @@ _language_name: 中文
 phase:
   async_task:
     name: 异步事件
-    detail: 执行异步计划的世界
+    detail: 执行异步计划的事件
   auto_save:
     name: 自动保存
     detail: 自动保存
   block_change_sync:
     name: 方块变化同步
-    detail: 将区块中的方块变化同步至客户端
+    detail: 向客户端同步区块中的方块变化
   block_event:
     name: 方块事件
     detail: 执行方块事件
@@ -27,7 +27,7 @@ phase:
     detail: 函数与数据包的指令
   console:
     name: 控制台
-    detail: 处理控制台指令输入
+    detail: 处理控制台输入的指令
   dragon_fight:
     name: 龙战
     detail: 龙战逻辑
@@ -36,7 +36,7 @@ phase:
     detail: 运算实体
   entity_management:
     name: 实体管理
-    detail: 加载/卸载那些因区块加载/卸载而增删的实体
+    detail: 加载/卸载那些因区块加载/卸载而增/删的实体
   entity_tracker:
     name: 实体追踪器
     detail: 向客户端同步实体状态更新
@@ -117,7 +117,7 @@ phase:
     detail: 生成游商
   weather:
     name: 天气
-    detail: 运算下雨打雷的天气逻辑
+    detail: 天气逻辑更新
   world_border:
     name: 世界边界
     detail: 更新世界边界
