@@ -1,14 +1,14 @@
-**English** | [中文](README-zh_cn.md)
+[English](README.md) | **中文**
 
 # Minecraft Game Phase
 
 [![CC BY-NC-SA 4.0][cc-by-nc-sa-shield]][cc-by-nc-sa] 
 
-Minecraft game phase list and its history
+Minecraft 的游戏阶段列表，及其历史变更
 
-[Game phases in detailed](https://github.com/Fallen-Breath/MinecraftTickPhase/tree/page)
+[游戏阶段列表详情](https://github.com/Fallen-Breath/MinecraftTickPhase/tree/page)
 
-[Game phase history changes](https://github.com/Fallen-Breath/MinecraftTickPhase/commits/diff/en_us)
+[游戏阶段历史变更](https://github.com/Fallen-Breath/MinecraftTickPhase/commits/diff/zh_cn)
 
 [![CC BY-NC-SA 4.0][cc-by-nc-sa-image]][cc-by-nc-sa]
 
