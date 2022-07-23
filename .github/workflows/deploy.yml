@@ -36,7 +36,7 @@ jobs:
         env:
           REPO: self
           BRANCH: page
-          FOLDER: pages
+          FOLDER: page
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SQUASH_HISTORY: true
           SKIP_EMPTY_COMMITS: true

@@ -5,7 +5,8 @@ import utils
 
 ROOT_DIR = Path(__file__).parent.parent
 DATA_DIR = ROOT_DIR / 'data'
-OUTPUT_DIR = ROOT_DIR / 'pages'
+OUTPUT_DIR = ROOT_DIR / 'page'
+OUTPUT_PHASES_DIR = OUTPUT_DIR / 'phases'
 assert DATA_DIR.is_dir()
 
 __meta = utils.load_yaml(DATA_DIR / 'meta.yml')

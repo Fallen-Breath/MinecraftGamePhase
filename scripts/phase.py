@@ -1,6 +1,5 @@
-from typing import List, Any, Callable, Union, Optional
+from typing import List, Any, Callable, Optional
 
-from constant import IMPORTANT_PHASES
 from translation import tr
 
 _WRITER = Callable[[str], Any]
