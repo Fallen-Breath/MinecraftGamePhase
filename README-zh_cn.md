@@ -6,7 +6,7 @@
 
 Minecraft 的游戏阶段列表，及其历史变更
 
-[游戏阶段列表详情](https://github.com/Fallen-Breath/MinecraftTickPhase/tree/page)
+[游戏阶段列表详情](https://github.com/Fallen-Breath/MinecraftGamePhase/blob/page/README-zh_cn.md)
 
 [游戏阶段历史变更](https://github.com/Fallen-Breath/MinecraftTickPhase/commits/diff/zh_cn)
 

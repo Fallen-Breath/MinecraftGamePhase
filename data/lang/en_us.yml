@@ -132,6 +132,10 @@ phase:
     detail: Spawning zombie sieges
 
 page:
+  readme:
+    index: Index
+    mc_version: Minecraft version
+    applicable_version: Applicable versions
   title: Game phase for Minecraft {0}
   applicable_version: 'Applicable versions: {0}'
   phase_tree: Phase Tree

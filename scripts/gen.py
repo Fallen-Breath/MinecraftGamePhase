@@ -4,7 +4,7 @@ from typing import Callable, Any, Dict
 from git import Repo
 
 import utils
-from constant import OUTPUT_DIR, DATA_DIR, MC_VERSIONS, LANGUAGES, MCVersion, OUTPUT_DIFF_DIR, OUTPUT_PAGE_DIR
+from constant import OUTPUT_DIR, DATA_DIR, MC_VERSIONS, LANGUAGES, MCVersion, OUTPUT_DIFF_DIR, OUTPUT_PAGE_DIR, DEFAULT_LANGUAGE
 from phase import PhaseTree
 from translation import language_context, tr
 
@@ -54,23 +54,23 @@ def gen_page(mcv: MCVersion, writeln: Callable[[str], Any]):
 	root.for_each(print_detail)
 
 
-def gen_pages():
-	with utils.write_file(OUTPUT_PAGE_DIR / 'README.md') as f:
-		f.write('# Index\n\n')
+def gen_readme(lang: str):
+	with utils.write_file(OUTPUT_PAGE_DIR / 'README{}.md'.format('-' + lang if lang != DEFAULT_LANGUAGE else '')) as f:
+		f.write('# {}\n\n'.format(Text('readme.index')))
 
-		f.write('| Minecraft version | Links |\n'.format(Text('mc_version'), Text('link')))
+		f.write('| {} | {} |\n'.format(Text('readme.mc_version'), Text('readme.applicable_version')))
 		f.write('| --- | --- |\n')
 		for mcv in MC_VERSIONS:
-			items = []
-			for lang in LANGUAGES:
-				with language_context(lang):
-					items.append(' [{}](./phases/{}-{}.md)'.format(tr('_language_name'), mcv.name, lang))
-			f.write('| {} | {} |\n'.format(mcv.version_range, ', '.join(items)))
+			f.write('| {} | {} |\n'.format('[{}](./phases/{}-{}.md)'.format(mcv.name, mcv.name, lang), mcv.version_range))
 		f.write('\n')
 
-	for mcv in MC_VERSIONS:
-		for lang in LANGUAGES:
-			with language_context(lang):
+
+def gen_pages():
+	for lang in LANGUAGES:
+		with language_context(lang):
+			gen_readme(lang)
+
+			for mcv in MC_VERSIONS:
 				with utils.write_file(OUTPUT_PAGE_DIR / 'phases' / '{}-{}.md'.format(mcv.name, lang)) as f:
 					gen_page(mcv, lambda s: f.write(s + '\n'))
 

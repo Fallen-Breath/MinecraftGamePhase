@@ -132,7 +132,11 @@ phase:
     detail: 生成僵尸攻城
 
 page:
+  readme:
+    index: 索引
+    mc_version: Minecraft 版本
+    applicable_version: 适用版本
   title: Minecraft {0} 游戏阶段
-  applicable_version: '适用版本范围: {0}'
+  applicable_version: '适用版本: {0}'
   phase_tree: 游戏阶段树
   phase_details: 游戏阶段详情

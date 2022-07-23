@@ -6,7 +6,7 @@
 
 Minecraft game phase list and its history
 
-[Game phases in detailed](https://github.com/Fallen-Breath/MinecraftTickPhase/tree/page)
+[Game phases in detailed](https://github.com/Fallen-Breath/MinecraftGamePhase/blob/page/README.md)
 
 [Game phase history changes](https://github.com/Fallen-Breath/MinecraftTickPhase/commits/diff/en_us)
 
