@@ -1,9 +1,12 @@
+import os
 from pathlib import Path
 from typing import List, NamedTuple
 
 import utils
 
-REPO_URL = 'https://github.com/Fallen-Breath/MinecraftTickPhase.git'
+REPO_URL = 'https://github.com/Fallen-Breath/MinecraftTickPhase'
+if 'github_api_token' in os.environ:
+	REPO_URL = 'https://{}@github.com/Fallen-Breath/MinecraftTickPhase.git'.format(os.environ['github_api_token'])
 
 ROOT_DIR = Path(__file__).parent.parent
 DATA_DIR = ROOT_DIR / 'data'

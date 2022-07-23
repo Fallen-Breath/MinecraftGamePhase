@@ -30,6 +30,8 @@ jobs:
         run: |
           cd ./scripts
           python gen.py
+        env:
+          github_api_token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Deploy pages
         uses: s0/git-publish-subdir-action@develop
