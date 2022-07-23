@@ -138,5 +138,7 @@ page:
     applicable_version: 适用版本
   title: Minecraft {0} 游戏阶段
   applicable_version: '适用版本: {0}'
-  phase_tree: 游戏阶段树
+  phase_tree:
+    simplified: 游戏阶段树 (精简)
+    full: 游戏阶段树 (完整)
   phase_details: 游戏阶段详情

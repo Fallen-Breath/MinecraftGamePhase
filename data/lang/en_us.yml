@@ -138,5 +138,7 @@ page:
     applicable_version: Applicable versions
   title: Game phase for Minecraft {0}
   applicable_version: 'Applicable versions: {0}'
-  phase_tree: Phase Tree
+  phase_tree:
+    simplified: Phase Tree (Simplified)
+    full: Phase Tree (Full)
   phase_details: Phase Details

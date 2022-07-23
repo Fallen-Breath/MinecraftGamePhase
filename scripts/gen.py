@@ -4,7 +4,7 @@ from typing import Dict, IO
 from git import Repo
 
 import utils
-from constant import OUTPUT_DIR, DATA_DIR, MC_VERSIONS, LANGUAGES, MCVersion, OUTPUT_DIFF_DIR, OUTPUT_PAGE_DIR, DEFAULT_LANGUAGE
+from constant import OUTPUT_DIR, DATA_DIR, MC_VERSIONS, LANGUAGES, MCVersion, OUTPUT_DIFF_DIR, OUTPUT_PAGE_DIR, DEFAULT_LANGUAGE, IMPORTANT_PHASES
 from phase import PhaseTree
 from translation import language_context, tr, current_lang, get_lang_specified_file_name
 
@@ -50,11 +50,17 @@ def write_nav_header(file_name: str, file: IO[str]):
 
 
 def gen_page(mcv: MCVersion, file: IO[str]):
-	file.write('# {}\n'.format(Text('title', mcv.name)))
+	file.write('# {}\n\n'.format(Text('title', mcv.name)))
 	file.write('{}\n\n'.format(Text('applicable_version', mcv.version_range)))
 
 	root = trees[mcv]
-	file.write('# {}\n\n'.format(Text('phase_tree')))
+	file.write('# {}\n\n'.format(Text('phase_tree.simplified')))
+	file.write('```\n')
+	root.extract(lambda n: n.node_id in IMPORTANT_PHASES).print_tree(lambda s: file.write(s + '\n'))
+	file.write('```\n')
+	file.write('\n')
+
+	file.write('# {}\n\n'.format(Text('phase_tree.full')))
 	file.write('```\n')
 	root.print_tree(lambda s: file.write(s + '\n'))
 	file.write('```\n')
