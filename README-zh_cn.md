@@ -2,13 +2,16 @@
 
 # Minecraft Game Phase
 
-[![CC BY-NC-SA 4.0][cc-by-nc-sa-shield]][cc-by-nc-sa] 
+[![CC BY-NC-SA 4.0][cc-by-nc-sa-shield]][cc-by-nc-sa]
 
 Minecraft 的游戏阶段列表，及其历史变更
 
-[游戏阶段列表详情](https://github.com/Fallen-Breath/MinecraftGamePhase/blob/page/README-zh_cn.md)
+查看具体内容：
 
-[游戏阶段历史变更](https://github.com/Fallen-Breath/MinecraftTickPhase/commits/diff/zh_cn)
+- [游戏阶段列表详情](https://github.com/Fallen-Breath/MinecraftGamePhase/blob/page/README-zh_cn.md)
+- [游戏阶段历史变更](https://github.com/Fallen-Breath/MinecraftTickPhase/commits/diff/zh_cn)
+
+数据储存于 `data/` 文件夹中，内容通过 github action 生成至对应的分支中
 
 [![CC BY-NC-SA 4.0][cc-by-nc-sa-image]][cc-by-nc-sa]
 

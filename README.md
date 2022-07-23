@@ -2,13 +2,16 @@
 
 # Minecraft Game Phase
 
-[![CC BY-NC-SA 4.0][cc-by-nc-sa-shield]][cc-by-nc-sa] 
+[![CC BY-NC-SA 4.0][cc-by-nc-sa-shield]][cc-by-nc-sa]
 
 Minecraft game phase list and its history
 
-[Game phases in detailed](https://github.com/Fallen-Breath/MinecraftGamePhase/blob/page/README.md)
+View contents:
 
-[Game phase history changes](https://github.com/Fallen-Breath/MinecraftTickPhase/commits/diff/en_us)
+- [Game phases in detailed](https://github.com/Fallen-Breath/MinecraftGamePhase/blob/page/README.md)
+- [Game phase history changes](https://github.com/Fallen-Breath/MinecraftTickPhase/commits/diff/en_us)
+
+Data are stored in `data/` folder. Contents are generated via github action and stored to corresponding branches
 
 [![CC BY-NC-SA 4.0][cc-by-nc-sa-image]][cc-by-nc-sa]
 
