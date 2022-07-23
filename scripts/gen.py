@@ -49,12 +49,12 @@ def write_nav_header(file_name: str, file: IO[str]):
 	file.write('\n')
 
 
-def write_tree(root: PhaseTree, file: IO[str], *, simplified: bool = False):
+def write_tree(root: PhaseTree, file: IO[str], *, simplified: bool = False, draw_line: bool = True):
 	file.write('```\n')
 	if simplified:
 		root = root.extract(lambda n: n.node_id in IMPORTANT_PHASES)
 		assert root is not None
-	root.print_tree(lambda s: file.write(s + '\n'))
+	root.print_tree(lambda s: file.write(s + '\n'), draw_line=draw_line)
 	file.write('```\n')
 	file.write('\n')
 
@@ -113,9 +113,9 @@ def gen_git():
 			repo = Repo.init(repo_path)
 			for mcv in MC_VERSIONS:
 				with utils.write_file(repo_path / name_simplified) as f:
-					write_tree(trees[mcv], f, simplified=True)
+					write_tree(trees[mcv], f, simplified=True, draw_line=False)
 				with utils.write_file(repo_path / name_full) as f:
-					write_tree(trees[mcv], f, simplified=False)
+					write_tree(trees[mcv], f, simplified=False, draw_line=False)
 				repo.index.add([name_full, name_simplified])
 				repo.index.commit('Minecraft {}\n\nversion range: {}'.format(mcv.name, mcv.version_range))
 

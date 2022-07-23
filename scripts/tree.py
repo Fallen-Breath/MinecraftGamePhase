@@ -61,20 +61,31 @@ class PhaseTree:
 
 		traverse(self)
 
-	def __print_tree(self, writer: _WRITER, prefix: str):
-		line = self.name
-		if not self.is_root:
-			line = ('└── ' if self.is_last_child else '├── ') + line
-		writer(prefix + line)
+	def print_tree(self, writer: _WRITER, *, draw_line: bool = True):
+		def get_item_line(node: PhaseTree) -> str:
+			if not draw_line:
+				return '    '
+			if node.is_last_child:
+				return '└── '
+			return '├── '
 
-		for child in self.children:
-			new_prefix = prefix
-			if not self.is_root:
-				new_prefix += '    ' if self.is_last_child else '│   '
-			child.__print_tree(writer, new_prefix)
+		def get_parent_line(node: PhaseTree) -> str:
+			if node.is_root:
+				return ''
+			if not draw_line or node.is_last_child:
+				return '    '
+			return '│   '
 
-	def print_tree(self, writer: _WRITER):
-		self.__print_tree(writer, '')
+		def __print_tree(node, prefix: str):
+			line = node.name
+			if not node.is_root:
+				line = get_item_line(node) + line
+			writer(prefix + line)
+
+			for child in node.children:
+				__print_tree(child, prefix + get_parent_line(node))
+
+		__print_tree(self, '')
 
 	def extract(self, predicate: Callable[['PhaseTree'], bool]) -> Optional['PhaseTree']:
 		node = PhaseTree(self.node_id)
