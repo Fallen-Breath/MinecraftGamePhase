@@ -2,7 +2,11 @@
 
 [![CC BY-NC-SA 4.0][cc-by-nc-sa-shield]][cc-by-nc-sa] 
 
-Tick phase list for Minecraft
+Game phase list for Minecraft
+
+[Game phases in detailed](https://github.com/Fallen-Breath/MinecraftTickPhase/tree/page)
+
+[Phase diff](https://github.com/Fallen-Breath/MinecraftTickPhase/commits/diff/en_us)
 
 [![CC BY-NC-SA 4.0][cc-by-nc-sa-image]][cc-by-nc-sa]
 

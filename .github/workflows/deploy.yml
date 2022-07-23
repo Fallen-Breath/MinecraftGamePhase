@@ -28,10 +28,10 @@ jobs:
 
       - name: Generate output
         run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           cd ./scripts
           python gen.py
-        env:
-          github_api_token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Deploy pages
         uses: s0/git-publish-subdir-action@develop
@@ -42,3 +42,14 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SQUASH_HISTORY: true
           SKIP_EMPTY_COMMITS: true
+
+      - name: Push diffs
+        run: |
+          cd ./output/diff
+          for lang in en_us zh_cn
+          do
+            cd $lang
+            git remote add origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+            git push origin master:diff/$lang --force
+            cd ..
+          done

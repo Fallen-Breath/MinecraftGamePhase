@@ -4,7 +4,7 @@ from typing import Callable, Any, Dict
 from git import Repo
 
 import utils
-from constant import OUTPUT_DIR, DATA_DIR, MC_VERSIONS, LANGUAGES, MCVersion, OUTPUT_DIFF_DIR, OUTPUT_PAGE_DIR, REPO_URL
+from constant import OUTPUT_DIR, DATA_DIR, MC_VERSIONS, LANGUAGES, MCVersion, OUTPUT_DIFF_DIR, OUTPUT_PAGE_DIR
 from phase import PhaseTree
 from translation import language_context, tr
 
@@ -88,8 +88,6 @@ def gen_git():
 					f.write('```\n')
 				repo.index.add([phase_file_name])
 				repo.index.commit('Minecraft {}\n\nversion range: {}'.format(mcv.name, mcv.version_range))
-			origin = repo.create_remote('origin', url=REPO_URL)
-			origin.push(refspec='refs/heads/master:refs/heads/{}'.format('diff/{}'.format(lang)))
 
 
 def main():
