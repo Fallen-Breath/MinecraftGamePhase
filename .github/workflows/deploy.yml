@@ -44,7 +44,7 @@ jobs:
           BRANCH: page
           FOLDER: output/page
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SQUASH_HISTORY: true
+          SQUASH_HISTORY: false
           SKIP_EMPTY_COMMITS: true
 
       - name: Push diffs

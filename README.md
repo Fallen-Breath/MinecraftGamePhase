@@ -13,6 +13,8 @@ View contents:
 
 Data are stored in `data/` folder. Contents are generated via github action and stored to corresponding branches
 
+If you need to reference the contents of this repository, you need to note that branches prefixed with `diff/` will be completely overwritten when the data is updated, leaving no commit history. Therefore, it is not recommended to pick git permalink of the contents in these branches.
+
 [![CC BY-NC-SA 4.0][cc-by-nc-sa-image]][cc-by-nc-sa]
 
 [cc-by-nc-sa]: http://creativecommons.org/licenses/by-nc-sa/4.0/
