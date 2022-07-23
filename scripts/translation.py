@@ -6,7 +6,8 @@ from constant import LANGUAGES, DATA_DIR, DEFAULT_LANGUAGE
 
 __all__ = [
 	'language_context',
-	'tr'
+	'current_lang',
+	'tr',
 ]
 
 # lang -> (key -> text)
@@ -36,12 +37,16 @@ def __build(translation: Dict[str, str], obj: dict, path: str):
 @contextmanager
 def language_context(lang: str):
 	global __current_lang
-	prev_lang = lang
+	prev_lang = __current_lang
 	__current_lang = lang
 	try:
 		yield
 	finally:
 		__current_lang = prev_lang
+
+
+def current_lang() -> str:
+	return __current_lang
 
 
 def __get(lang: str, key: str) -> Optional[str]:
@@ -51,6 +56,17 @@ def __get(lang: str, key: str) -> Optional[str]:
 def tr(key: str, *args, **kwargs):
 	text = __get(__current_lang, key) or key
 	return text.format(*args, **kwargs)
+
+
+def get_lang_specified_file_name(name: str) -> str:
+	base, extension = name.rsplit('.', 1)
+	split = base.rsplit('-', 1)
+	if len(split) == 2 and split[1] in LANGUAGES:
+		base = split[0]  # remove existed language suffix
+	if current_lang() == DEFAULT_LANGUAGE and base.upper() == 'README':
+		return '{}.{}'.format(base, extension)
+	else:
+		return '{}-{}.{}'.format(base, current_lang(), extension)
 
 
 __load()

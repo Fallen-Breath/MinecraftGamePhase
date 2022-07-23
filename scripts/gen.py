@@ -1,12 +1,12 @@
 import shutil
-from typing import Callable, Any, Dict
+from typing import Dict, IO
 
 from git import Repo
 
 import utils
 from constant import OUTPUT_DIR, DATA_DIR, MC_VERSIONS, LANGUAGES, MCVersion, OUTPUT_DIFF_DIR, OUTPUT_PAGE_DIR, DEFAULT_LANGUAGE
 from phase import PhaseTree
-from translation import language_context, tr
+from translation import language_context, tr, current_lang, get_lang_specified_file_name
 
 trees: Dict[MCVersion, PhaseTree] = {}
 
@@ -34,28 +34,45 @@ def load():
 		trees[mcv] = PhaseTree.create(data)
 
 
-def gen_page(mcv: MCVersion, writeln: Callable[[str], Any]):
-	writeln('# {}\n'.format(Text('title', mcv.name)))
-	writeln('{}\n'.format(Text('applicable_version', mcv.version_range)))
+def write_nav_header(file_name: str, file: IO[str]):
+	nav_list = []
+	for lang in LANGUAGES:
+		with language_context(lang):
+			lang_name = tr('_language_name')
+		if lang == current_lang():
+			text = '**{}**'.format(lang_name)
+		else:
+			with language_context(lang):
+				text = '[{}]({})'.format(lang_name, get_lang_specified_file_name(file_name))
+		nav_list.append('{}'.format(text))
+	file.write('{}\n'.format(' | '.join(nav_list)))
+	file.write('\n')
+
+
+def gen_page(mcv: MCVersion, file: IO[str]):
+	file.write('# {}\n'.format(Text('title', mcv.name)))
+	file.write('{}\n\n'.format(Text('applicable_version', mcv.version_range)))
 
 	root = trees[mcv]
-	writeln('# {}\n'.format(Text('phase_tree')))
-	writeln('```')
-	root.print_tree(writeln)
-	writeln('```')
-	writeln('')
+	file.write('# {}\n\n'.format(Text('phase_tree')))
+	file.write('```\n')
+	root.print_tree(lambda s: file.write(s + '\n'))
+	file.write('```\n')
+	file.write('\n')
 
-	writeln('# {}\n'.format(Text('phase_details')))
+	file.write('# {}\n\n'.format(Text('phase_details')))
 
 	def print_detail(node: PhaseTree):
-		writeln('### {}\n'.format(node.name))
-		writeln('{}\n'.format(node.detail))
+		file.write('### {}\n\n'.format(node.name))
+		file.write('{}\n\n'.format(node.detail))
 
 	root.for_each(print_detail)
 
 
 def gen_readme(lang: str):
-	with utils.write_file(OUTPUT_PAGE_DIR / 'README{}.md'.format('-' + lang if lang != DEFAULT_LANGUAGE else '')) as f:
+	file_name = get_lang_specified_file_name('README.md')
+	with utils.write_file(OUTPUT_PAGE_DIR / file_name) as f:
+		write_nav_header(file_name, f)
 		f.write('# {}\n\n'.format(Text('readme.index')))
 
 		f.write('| {} | {} |\n'.format(Text('readme.mc_version'), Text('readme.applicable_version')))
@@ -71,8 +88,10 @@ def gen_pages():
 			gen_readme(lang)
 
 			for mcv in MC_VERSIONS:
-				with utils.write_file(OUTPUT_PAGE_DIR / 'phases' / '{}-{}.md'.format(mcv.name, lang)) as f:
-					gen_page(mcv, lambda s: f.write(s + '\n'))
+				file_name = '{}-{}.md'.format(mcv.name, lang)
+				with utils.write_file(OUTPUT_PAGE_DIR / 'phases' / file_name) as f:
+					write_nav_header(file_name, f)
+					gen_page(mcv, f)
 
 
 def gen_git():
