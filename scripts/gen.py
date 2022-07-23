@@ -54,19 +54,19 @@ def gen_page(mcv: MCVersion, file: IO[str]):
 	file.write('{}\n\n'.format(Text('applicable_version', mcv.version_range)))
 
 	root = trees[mcv]
-	file.write('# {}\n\n'.format(Text('phase_tree.simplified')))
+	file.write('## {}\n\n'.format(Text('phase_tree.simplified')))
 	file.write('```\n')
 	root.extract(lambda n: n.node_id in IMPORTANT_PHASES).print_tree(lambda s: file.write(s + '\n'))
 	file.write('```\n')
 	file.write('\n')
 
-	file.write('# {}\n\n'.format(Text('phase_tree.full')))
+	file.write('## {}\n\n'.format(Text('phase_tree.full')))
 	file.write('```\n')
 	root.print_tree(lambda s: file.write(s + '\n'))
 	file.write('```\n')
 	file.write('\n')
 
-	file.write('# {}\n\n'.format(Text('phase_details')))
+	file.write('## {}\n\n'.format(Text('phase_details')))
 
 	def print_detail(node: PhaseTree):
 		file.write('### {}\n\n'.format(node.name))
