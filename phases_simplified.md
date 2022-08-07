@@ -1,17 +1,18 @@
 ```
 Game Loop
-    Player Action
     For each world
-        Natural Spawning
-        Chunk Unload
         World Time Update
+        For each chunk
+            Block Change Sync
+            Natural Spawning
+            Chunk Tick
+        Chunk Unload
         Tile Tick
-        Chunk Tick
-        Block Change Sync
         Block Event
         Entity
         Tile Entity
     Player Entity
     Auto save
+    Player Action
 ```
 
