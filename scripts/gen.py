@@ -118,7 +118,7 @@ def gen_git():
 				with utils.write_file(repo_path / name_full) as f:
 					write_tree(trees[mcv], f, simplified=False, draw_line=False)
 
-				message = 'Minecraft {}\n\nVersion range: {}'.format(mcv.name, mcv.version_range)
+				message = 'Minecraft {0}\n\nCurrent version: {0} ({1})'.format(mcv.name, mcv.version_range)
 				if prev is not None:
 					message += '\nPrevious version: {} ({})'.format(prev.name, prev.version_range)
 				repo.index.add([name_full, name_simplified])
