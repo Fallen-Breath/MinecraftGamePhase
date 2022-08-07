@@ -2,11 +2,15 @@
 Game Loop
     Async task
         Player Action
+    Command Function
     For each world
         World Time Sync
+        World Border
         Weather
         Sleeping
         Natural Spawning
+        Special Spawning
+            Phantom Spawning
         Chunk Unload
         World Time Update
         Tile Tick
@@ -28,7 +32,6 @@ Game Loop
         Entity Tracker
     Network
         Player Entity
-    Command Function
     Console
     Auto save
 ```
