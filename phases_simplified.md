@@ -2,12 +2,12 @@
 Game Loop
     For each world
         World Time Update
+        Tile Tick
         For each chunk
-            Block Change Sync
             Natural Spawning
             Chunk Tick
+        Block Change Sync
         Chunk Unload
-        Tile Tick
         Block Event
         Entity
         Tile Entity
