@@ -1,5 +1,5 @@
 import shutil
-from typing import Dict, IO
+from typing import Dict, IO, Optional
 
 from git import Repo
 
@@ -111,13 +111,20 @@ def gen_git():
 		repo_path = OUTPUT_DIFF_DIR / lang
 		with language_context(lang):
 			repo = Repo.init(repo_path)
+			prev: Optional[MCVersion] = None
 			for mcv in MC_VERSIONS:
 				with utils.write_file(repo_path / name_simplified) as f:
 					write_tree(trees[mcv], f, simplified=True, draw_line=False)
 				with utils.write_file(repo_path / name_full) as f:
 					write_tree(trees[mcv], f, simplified=False, draw_line=False)
+
+				message = 'Minecraft {}\n\nVersion range: {}'.format(mcv.name, mcv.version_range)
+				if prev is not None:
+					message += '\nPrevious version: {} ({})'.format(prev.name, prev.version_range)
 				repo.index.add([name_full, name_simplified])
-				repo.index.commit('Minecraft {}\n\nversion range: {}'.format(mcv.name, mcv.version_range))
+				repo.index.commit(message)
+
+				prev = mcv
 
 
 def main():
