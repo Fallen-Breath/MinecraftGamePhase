@@ -8,7 +8,7 @@ Minecraft game phase list and its history
 
 View contents:
 
-- [Game phases in detailed](https://github.com/Fallen-Breath/MinecraftGamePhase/blob/page/README.md)
+- [Game phases in detailed](https://github.com/Fallen-Breath/MinecraftGamePhase/blob/page/README.md) (Can also check it here: https://fallen-breath.github.io/MinecraftGamePhase/)
 - [Game phase history changes](https://github.com/Fallen-Breath/MinecraftTickPhase/commits/diff/en_us)
 
 Data are stored in `data/` folder. Contents are generated via github action and stored to corresponding branches
