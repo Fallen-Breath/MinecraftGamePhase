@@ -91,7 +91,7 @@ def gen_page(mcv: MCVersion, file: IO[str]):
 				file.write('{}\n\n'.format(Text('code_reference.mc_and_mapping', cr['mc_version'], cr['mapping'])))
 				file.write('- {}: `{}`\n'.format(Text('code_reference.reference'), cr['reference']))
 				if cr.get('caller'):
-					file.write('- {} `{}`\n'.format(Text('code_reference.caller'), cr['caller']))
+					file.write('- {}: `{}`\n'.format(Text('code_reference.caller'), cr['caller']))
 				file.write('\n')
 
 	root.for_each(print_detail)
