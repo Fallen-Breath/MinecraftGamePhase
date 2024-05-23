@@ -8,7 +8,7 @@ from ruamel.yaml import YAML
 
 def load_yaml(path: Union[str, PathLike]) -> dict:
 	with open(path, 'r', encoding='utf8') as f:
-		return YAML().load(f)
+		return YAML(typ='safe').load(f)
 
 
 @contextmanager

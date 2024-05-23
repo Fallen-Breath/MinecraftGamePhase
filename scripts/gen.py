@@ -76,6 +76,24 @@ def gen_page(mcv: MCVersion, file: IO[str]):
 		file.write('### {}\n\n'.format(node.name))
 		file.write('{}\n\n'.format(node.detail))
 
+		if code_references := node.data.get('code_references', []):
+			file.write('**{}**\n\n'.format(Text('code_reference.code_references')))
+			for cr in code_references:
+
+				# FIXME: temp stupid workaround
+				if mcv.name in ['1.12.2', '1.13.2']:
+					if len(code_references) == 2 and cr['mc_version'] != '1.13.2':
+						continue
+				else:
+					if cr['mc_version'] == '1.13.2':
+						continue
+
+				file.write('{}\n\n'.format(Text('code_reference.mc_and_mapping', cr['mc_version'], cr['mapping'])))
+				file.write('- {}: `{}`\n'.format(Text('code_reference.reference'), cr['reference']))
+				if cr.get('caller'):
+					file.write('- {} `{}`\n'.format(Text('code_reference.caller'), cr['caller']))
+				file.write('\n')
+
 	root.for_each(print_detail)
 
 

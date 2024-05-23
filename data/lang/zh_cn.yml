@@ -42,10 +42,10 @@ phase:
     detail: 向客户端同步实体状态更新
   for_each_chunk:
     name: 对于每一个区块
-    detail: 对于每个附近有玩家的情况，执行以下的逻辑
+    detail: 对于每个附近有玩家的情况，执行其下逻辑
   for_each_world:
     name: 对于每一个维度
-    detail: 对于每一个维度，执行以下的逻辑
+    detail: 对于每一个维度，执行其下逻辑
   game_event:
     name: 游戏事件
     detail: 发出积攒的游戏事件
@@ -142,3 +142,8 @@ page:
     simplified: 游戏阶段树 (精简)
     full: 游戏阶段树 (完整)
   phase_details: 游戏阶段详情
+  code_reference:
+    code_references: 代码参考
+    mc_and_mapping: 'Minecraft {0}, {1} 反混淆表'
+    reference: 代码位置
+    caller: 主调函数

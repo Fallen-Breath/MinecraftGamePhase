@@ -1,15 +1,24 @@
+import functools
 from typing import List, Any, Callable, Optional
 
+import utils
+from constant import DATA_DIR
 from translation import tr
 
 _WRITER = Callable[[str], Any]
 
 
 class PhaseTree:
+	@classmethod
+	@functools.lru_cache
+	def __read_phase_data(cls) -> dict:
+		return utils.load_yaml(DATA_DIR / 'phase_data.yml')
+
 	def __init__(self, node_id: str):
 		self.node_id: str = node_id
 		self.children: List['PhaseTree'] = []
 		self.parent: Optional['PhaseTree'] = None
+		self.data: dict = self.__read_phase_data().get(node_id) or {}
 
 	def __repr__(self):
 		return 'PhaseTree[id={}]'.format(self.node_id)

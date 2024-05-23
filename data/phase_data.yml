@@ -1,0 +1,256 @@
+# TODO: create code references for all mc versions separately
+async_task:
+  code_references:
+    - mc_version: '1.19'
+      mapping: mojmap
+      reference: net.minecraft.server.MinecraftServer#waitUntilNextTick
+      caller: net.minecraft.server.MinecraftServer#runServer
+auto_save:
+  code_references:
+    - mc_version: '1.19'
+      mapping: mojmap
+      reference: net.minecraft.server.MinecraftServer#saveEverything
+      caller: net.minecraft.server.MinecraftServer#tickServer
+block_change_sync:
+  code_references:
+    - mc_version: '1.19'
+      mapping: mojmap
+      reference: net.minecraft.server.level.ChunkHolder#broadcastChanges
+      caller: net.minecraft.server.level.ServerChunkCache#tickChunks
+block_event:
+  code_references:
+    - mc_version: '1.19'
+      mapping: mojmap
+      reference: net.minecraft.server.level.ServerLevel#runBlockEvents
+      caller: net.minecraft.server.level.ServerLevel#tick
+cat_spawning:
+  code_references:
+    - mc_version: '1.19'
+      mapping: mojmap
+      reference: net.minecraft.server.level.ServerLevel#tickCustomSpawners
+      caller: net.minecraft.server.level.ServerChunkCache#tickChunks
+chunk_tick:
+  code_references:
+    - mc_version: '1.19'
+      mapping: mojmap
+      reference: net.minecraft.server.level.ServerLevel#tickChunk
+      caller: net.minecraft.server.level.ServerChunkCache#tickChunks
+chunk_unload:
+  code_references:
+    - mc_version: '1.19'
+      mapping: mojmap
+      reference: net.minecraft.server.level.ChunkMap#tick(java.util.function.BooleanSupplier)
+      caller: net.minecraft.server.level.ServerChunkCache#tick
+command_function:
+  code_references:
+    - mc_version: '1.19'
+      mapping: mojmap
+      reference: net.minecraft.server.ServerFunctionManager#tick
+      caller: net.minecraft.server.MinecraftServer#tickChildren
+console:
+  code_references:
+    - mc_version: '1.19'
+      mapping: mojmap
+      reference: net.minecraft.server.dedicated.DedicatedServer#handleConsoleInputs
+      caller: net.minecraft.server.dedicated.DedicatedServer#tickChildren
+dragon_fight:
+  code_references:
+    - mc_version: '1.19'
+      mapping: mojmap
+      reference: net.minecraft.world.level.dimension.end.EndDragonFight#tick
+      caller: net.minecraft.server.level.ServerLevel#tick
+entity:
+  code_references:
+    - mc_version: '1.19'
+      mapping: mojmap
+      reference: net.minecraft.world.level.Level#guardEntityTick
+      caller: net.minecraft.server.level.ServerLevel#tick
+entity_management:
+  code_references:
+    - mc_version: '1.19'
+      mapping: mojmap
+      reference: net.minecraft.world.level.entity.PersistentEntitySectionManager#tick
+      caller: net.minecraft.server.level.ServerLevel#tick
+entity_tracker:
+  code_references:
+    - mc_version: '1.19'
+      mapping: mojmap
+      reference: net.minecraft.server.level.ChunkMap#tick
+      caller: net.minecraft.server.level.ServerChunkCache#tickChunks
+for_each_chunk:
+  code_references:
+    - mc_version: '1.19'
+      mapping: mojmap
+      reference: net.minecraft.server.level.ServerChunkCache#tickChunks
+for_each_world:
+  code_references:
+    - mc_version: '1.19'
+      mapping: mojmap
+      reference: net.minecraft.server.MinecraftServer#tickChildren
+game_event:
+  code_references:
+    - mc_version: '1.19'
+      mapping: mojmap
+      reference: net.minecraft.server.level.ServerLevel#sendGameEvents
+      caller: net.minecraft.server.level.ServerLevel#tick
+game_loop:
+  code_references:
+    - mc_version: '1.19'
+      mapping: mojmap
+      reference: net.minecraft.server.MinecraftServer#runServer
+ice_and_snow:
+  code_references:
+    - mc_version: '1.19'
+      mapping: mojmap
+      reference: net.minecraft.server.level.ServerLevel#tickChunk
+light_logic:
+  code_references:
+    - mc_version: '1.13.2'
+      mapping: mcp
+      reference: net.minecraft.world.chunk.Chunk#enqueueRelightChecks
+      caller: net.minecraft.world.WorldServer#tickBlocks
+natural_spawning:
+  code_references:
+    - mc_version: '1.19'
+      mapping: mojmap
+      reference: net.minecraft.world.level.NaturalSpawner#spawnForChunk
+      caller: net.minecraft.server.level.ServerChunkCache#tickChunks
+network:
+  code_references:
+    - mc_version: '1.19'
+      mapping: mojmap
+      reference: net.minecraft.server.network.ServerConnectionListener#tick
+      caller: net.minecraft.server.MinecraftServer#tickChildren
+patrol_spawning:
+  code_references:
+    - mc_version: '1.19'
+      mapping: mojmap
+      reference: net.minecraft.server.level.ServerLevel#tickCustomSpawners
+      caller: net.minecraft.server.level.ServerChunkCache#tickChunks
+phantom_spawning:
+  code_references:
+    - mc_version: '1.19'
+      mapping: mojmap
+      reference: net.minecraft.server.level.ServerLevel#tickCustomSpawners
+      caller: net.minecraft.server.level.ServerChunkCache#tickChunks
+player_action:
+  code_references:
+    - mc_version: '1.19'
+      mapping: mojmap
+      reference: net.minecraft.network.protocol.PacketUtils#ensureRunningOnSameThread
+player_entity:
+  code_references:
+    - mc_version: '1.19'
+      mapping: mojmap
+      reference: net.minecraft.server.network.ServerGamePacketListenerImpl#tick
+      caller: net.minecraft.network.Connection#tick
+player_check_light:
+  code_references:
+    - mc_version: '1.13.2'
+      mapping: mcp
+      reference: net.minecraft.world.WorldServer#playerCheckLight
+      caller: net.minecraft.world.WorldServer#tickBlocks
+player_chunk_map:
+  code_references:
+    - mc_version: '1.13.2'
+      mapping: mcp
+      reference: net.minecraft.server.management.PlayerChunkMap#tick
+      caller: net.minecraft.world.WorldServer#tick
+portal_cache:
+  code_references:
+    - mc_version: '1.13.2'
+      mapping: mcp
+      reference: net.minecraft.world.Teleporter#tick
+      caller: net.minecraft.world.WorldServer#tick
+raid:
+  code_references:
+    - mc_version: '1.19'
+      mapping: mojmap
+      reference: net.minecraft.world.entity.raid.Raids#tick
+      caller: net.minecraft.server.level.ServerLevel#tick
+random_tick:
+  code_references:
+    - mc_version: '1.19'
+      mapping: mojmap
+      reference: net.minecraft.server.level.ServerLevel#tickChunk
+sleeping:
+  code_references:
+    - mc_version: '1.19'
+      mapping: mojmap
+      reference: net.minecraft.server.level.ServerLevel#wakeUpAllPlayers
+      caller: net.minecraft.server.level.ServerLevel#tick
+special_spawning:
+  code_references:
+    - mc_version: '1.19'
+      mapping: mojmap
+      reference: net.minecraft.server.level.ServerLevel#tickCustomSpawners
+      caller: net.minecraft.server.level.ServerChunkCache#tickChunks
+thunder:
+  code_references:
+    - mc_version: '1.19'
+      mapping: mojmap
+      reference: net.minecraft.server.level.ServerLevel#tickChunk
+ticket:
+  code_references:
+    - mc_version: '1.19'
+      mapping: mojmap
+      reference: net.minecraft.server.level.DistanceManager#purgeStaleTickets
+      caller: net.minecraft.server.level.ServerChunkCache#tick
+tile_entity:
+  code_references:
+    - mc_version: '1.19'
+      mapping: mojmap
+      reference: net.minecraft.world.level.Level#tickBlockEntities
+      caller: net.minecraft.server.level.ServerLevel#tick
+tile_tick:
+  code_references:
+    - mc_version: '1.19'
+      mapping: mojmap
+      reference: net.minecraft.world.ticks.LevelTicks#tick
+      caller: net.minecraft.server.level.ServerLevel#tick
+village:
+  code_references:
+    - mc_version: '1.13.2'
+      mapping: mcp
+      reference: net.minecraft.village.VillageCollection#tick
+      caller: net.minecraft.world.WorldServer#tick
+wandering_trader_spawning:
+  code_references:
+    - mc_version: '1.19'
+      mapping: mojmap
+      reference: net.minecraft.server.level.ServerLevel#tickCustomSpawners
+      caller: net.minecraft.server.level.ServerChunkCache#tickChunks
+weather:
+  code_references:
+    - mc_version: '1.19'
+      mapping: mojmap
+      reference: net.minecraft.server.level.ServerLevel#advanceWeatherCycle
+      caller: net.minecraft.server.level.ServerLevel#tick
+world_border:
+  code_references:
+    - mc_version: '1.19'
+      mapping: mojmap
+      reference: net.minecraft.world.level.border.WorldBorder#tick
+      caller: net.minecraft.server.level.ServerLevel#tick
+world_time_sync:
+  code_references:
+    - mc_version: '1.19'
+      mapping: mojmap
+      reference: net.minecraft.network.protocol.game.ClientboundSetTimePacket
+      caller: net.minecraft.server.MinecraftServer#tickChildren
+world_time_update:
+  code_references:
+    - mc_version: '1.19'
+      mapping: mojmap
+      reference: net.minecraft.server.level.ServerLevel#tickTime
+      caller: net.minecraft.server.level.ServerLevel#tick
+zombie_siege_spawning:
+  code_references:
+    - mc_version: '1.13.2'
+      mapping: mcp
+      reference: net.minecraft.village.VillageSiege#tick
+      caller: net.minecraft.world.WorldServer#tick
+    - mc_version: '1.19'
+      mapping: mojmap
+      reference: net.minecraft.server.level.ServerLevel#tickCustomSpawners
+      caller: net.minecraft.server.level.ServerChunkCache#tickChunks

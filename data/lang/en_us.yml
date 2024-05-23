@@ -142,3 +142,8 @@ page:
     simplified: Phase Tree (Simplified)
     full: Phase Tree (Full)
   phase_details: Phase Details
+  code_reference:
+    code_references: Code References
+    mc_and_mapping: 'Minecraft {0}, {1} mapping'
+    reference: Reference
+    caller: Caller
