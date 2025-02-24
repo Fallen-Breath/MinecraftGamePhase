@@ -7,9 +7,10 @@ Game Loop
         Weather
         Sleeping
         World Time Update
+        Tile Tick
+        Raid
         Ticket
         For each chunk
-            Block Change Sync
             Natural Spawning
             Chunk Tick
                 Thunder
@@ -21,10 +22,9 @@ Game Loop
             Cat Spawning
             Zombie Siege Spawning
             Wandering Trader Spawning
+        Block Change Sync
         Entity Tracker
         Chunk Unload
-        Tile Tick
-        Raid
         Block Event
         Dragon Fight
         Entity
