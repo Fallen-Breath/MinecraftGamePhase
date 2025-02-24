@@ -1,38 +1,39 @@
 ```
 Game Loop
-    Async task
-        Player Action
     Command Function
     For each world
         World Time Sync
         World Border
         Weather
         Sleeping
-        Natural Spawning
+        World Time Update
+        Ticket
+        For each chunk
+            Block Change Sync
+            Natural Spawning
+            Chunk Tick
+                Thunder
+                Ice and Snow
+                Random Tick
         Special Spawning
             Phantom Spawning
+            Patrol Spawning
+            Cat Spawning
+            Zombie Siege Spawning
+        Entity Tracker
         Chunk Unload
-        World Time Update
         Tile Tick
-        Player Check Light
-        Chunk Tick
-            Light Logic
-            Thunder
-            Ice and Snow
-            Random Tick
-        Player Chunk Map
-            Block Change Sync
-        Village
-        Zombie Siege Spawning
-        Portal Cache
+        Raid
+        Wandering Trader Spawning
         Block Event
         Dragon Fight
         Entity
         Tile Entity
-        Entity Tracker
     Network
         Player Entity
     Console
     Auto save
+    Async task
+        Player Action
 ```
 
