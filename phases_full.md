@@ -20,11 +20,11 @@ Game Loop
             Patrol Spawning
             Cat Spawning
             Zombie Siege Spawning
+            Wandering Trader Spawning
         Entity Tracker
         Chunk Unload
         Tile Tick
         Raid
-        Wandering Trader Spawning
         Block Event
         Dragon Fight
         Entity
