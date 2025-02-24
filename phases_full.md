@@ -30,7 +30,6 @@ Game Loop
         Entity
         Tile Entity
         Entity Management
-        Game Event
     Network
         Player Entity
     Console
